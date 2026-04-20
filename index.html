@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stylish Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.14);
+      --text: #f5f7fb;
+      --muted: #c7cede;
+      --accent: #7c9cff;
+      --accent-2: #8ef0d0;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,156,255,0.28), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(142,240,208,0.18), transparent 30%),
+        linear-gradient(135deg, #090d1a 0%, #11182d 55%, #0a0f1f 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 11, 22, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .logo span {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-weight: 600;
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #5eead4);
+      color: #08111f;
+      border: none;
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.02;
+      margin-bottom: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      min-width: 130px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero-card img {
+      height: 100%;
+      min-height: 540px;
+      object-fit: cover;
+    }
+
+    .floating-box {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      right: 22px;
+      background: rgba(7, 12, 24, 0.72);
+      backdrop-filter: blur(16px);
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .section {
+      padding: 34px 0 70px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      max-width: 560px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .card img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(124,156,255,0.16);
+      color: #dfe7ff;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .gallery img {
+      height: 100%;
+      min-height: 180px;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+
+    .cta {
+      margin: 24px 0 80px;
+      padding: 34px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(124,156,255,0.22), rgba(142,240,208,0.16));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    footer {
+      padding: 22px 0 40px;
+      color: #a7afc3;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .split,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img {
+        min-height: 360px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .stats {
+        gap: 12px;
+      }
+
+      .stat {
+        flex: 1 1 100%;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Nova<span>Studio</span></div>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#contact">Get Started</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Modern Design • Real Images • Single File</div>
+        <h1>Build a page that looks premium from the first second.</h1>
+        <p>
+          A sleek, stylish landing page with strong typography, glassmorphism cards, smooth spacing,
+          and real high-quality images pulled from public photo sources.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn primary">Explore Design</a>
+          <a href="#features" class="btn">See Features</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>12K+</strong>
+            <span>creative users</span>
+          </div>
+          <div class="stat">
+            <strong>98%</strong>
+            <span>satisfaction rate</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>online access</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Creative team workspace">
+        <div class="floating-box">
+          <strong style="display:block; font-size:1.05rem; margin-bottom:6px;">Creative experiences with real visual impact</strong>
+          <span style="color: var(--muted);">Use this section for your product, portfolio, startup, agency, or personal brand.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-title">
+        <div>
+          <h2>Featured Highlights</h2>
+        </div>
+        <p>
+          Carefully arranged content blocks make the layout feel expensive, balanced, and ready for real-world use.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Laptop and code workspace">
+          <div class="card-content">
+            <span class="tag">Development</span>
+            <h3>Elegant layouts for product pages</h3>
+            <p>Show your app, project, or business in a more polished and trustworthy way.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Team meeting and collaboration">
+          <div class="card-content">
+            <span class="tag">Branding</span>
+            <h3>Visual storytelling that feels modern</h3>
+            <p>Use cards, images, and text hierarchy to make your content easier to scan and enjoy.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Mountain adventure landscape">
+          <div class="card-content">
+            <span class="tag">Lifestyle</span>
+            <h3>Perfect for creative or personal sites</h3>
+            <p>Swap the text and images to instantly turn this into a portfolio, blog, or landing page.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="split">
+        <div class="panel">
+          <h3>Designed to feel premium without frameworks</h3>
+          <p>
+            This file is fully standalone. You can save it as <code>index.html</code> and open it directly in your browser.
+          </p>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Single file structure</strong>
+              Everything is included in one HTML file with internal CSS.
+            </div>
+            <div class="feature">
+              <strong>Responsive layout</strong>
+              Looks good on desktop, tablet, and mobile screens.
+            </div>
+            <div class="feature">
+              <strong>Real image URLs</strong>
+              Uses actual high-quality public images instead of placeholders.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="gallery">
+          <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Laptop on desk">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="People discussing ideas">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80" alt="Coding close-up">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Startup workspace">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready to turn this into your own website?</h2>
+      <p>
+        Replace the logo, headings, text, and image URLs with your own content and you’ll have a clean, stylish homepage in minutes.
+      </p>
+      <a href="mailto:hello@example.com" class="btn primary">Contact Us</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 NovaStudio — Crafted for a sleek first impression.
+    </div>
+  </footer>
+</body>
+</html>
