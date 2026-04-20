@@ -1,2 +1,5 @@
 Aujourd'hui, j'apprends Git
-Git est génial avec VS Code !
+Git est génial avec VS Code et terminal !
+
+
+
