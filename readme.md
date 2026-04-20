@@ -15,7 +15,7 @@
 
 ## 📸 Preview
 <p align="center">
-  <img src="https://via.placeholder.com/800x400" alt="preview" />
+  <img src="https://dreamworks.fandom.com/wiki/Shrek_%28character%29" alt="preview" />
 </p>
 
 ---
