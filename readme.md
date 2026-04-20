@@ -15,7 +15,7 @@
 
 ## 📸 Preview
 <p align="center">
-  <img src="https://dreamworks.fandom.com/wiki/Shrek_%28character%29" alt="preview" />
+  <img src="https://static.wikia.nocookie.net/dreamworks/images/6/67/Shrek_Profile.jpg/revision/latest?cb=20231223041813" alt="preview" />
 </p>
 
 ---
